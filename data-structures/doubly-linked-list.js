@@ -1,11 +1,12 @@
 class Node {
   constructor(data) {
     this.data = data;
+    this.prev = null;
     this.next = null;
   }
 }
 
-class SinglyLinkedList {
+class DoublyLinkedList {
   constructor() {
     this.head = null;
     this.tail = null;
@@ -108,7 +109,7 @@ class SinglyLinkedList {
   } */
 }
 
-const linkedList = new SinglyLinkedList();
+const linkedList = new DoublyLinkedList();
 
 linkedList.append(100);
 linkedList.append(80);
