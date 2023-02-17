@@ -59,9 +59,11 @@ export class SinglyLinkedList {
       return;
     }
 
+    const toRemove = this.head;
     const nextNode = this.head.next;
     this.head.next = null;
     this.head = nextNode;
+    return toRemove.data;
   }
 
   // O(n)

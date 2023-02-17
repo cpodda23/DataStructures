@@ -1,8 +1,8 @@
-import { DoublyLinkedList } from './doubly-linked-list';
+import { SinglyLinkedList } from './singly-linked-list';
 
 class Queue {
   constructor() {
-    this.data = new DoublyLinkedList();
+    this.data = new SinglyLinkedList();
   }
   // O(1)
   peek() {
@@ -10,23 +10,23 @@ class Queue {
   }
 
   // O(1)
-  push(value) {
+  enqueue(value) {
     this.data.append(value);
   }
 
   // O(1)
-  pop() {
-    this.data.removeFirst();
+  dequeue() {
+    return this.data.removeFirst();
   }
 }
 
 const queue = new Queue();
 
-queue.push('AAA');
-queue.push('BBB');
-queue.push('CCC');
+queue.enqueue('AAA');
+queue.enqueue('BBB');
+queue.enqueue('CCC');
 console.log(queue.peek()); //AAA
 
-queue.pop();
-queue.pop();
-console.log(queue.peek()); //CCC
+queue.dequeue();
+console.log(queue.dequeue());
+// console.log(queue.peek()); //CCC
