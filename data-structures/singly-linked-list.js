@@ -5,7 +5,7 @@ class Node {
   }
 }
 
-class SinglyLinkedList {
+export class SinglyLinkedList {
   constructor() {
     this.head = null;
     this.tail = null;
@@ -110,26 +110,26 @@ class SinglyLinkedList {
 
 const linkedList = new SinglyLinkedList();
 
-linkedList.append(100);
-linkedList.append(80);
-linkedList.append(77);
-linkedList.append(80);
-linkedList.append(33);
+// linkedList.append(100);
+// linkedList.append(80);
+// linkedList.append(77);
+// linkedList.append(80);
+// linkedList.append(33);
 
-linkedList.prepend(11);
-linkedList.prepend(9);
+// linkedList.prepend(11);
+// linkedList.prepend(9);
 
-// 9, 11, 100, 80, 77, 80,  33
+// // 9, 11, 100, 80, 77, 80,  33
 
-linkedList.removeLast();
-// 9, 11, 100, 80, 77, 80
+// linkedList.removeLast();
+// // 9, 11, 100, 80, 77, 80
 
-linkedList.removeFirst();
-// 11, 100, 80, 77, 80
+// linkedList.removeFirst();
+// // 11, 100, 80, 77, 80
 
-linkedList.remove(80);
-// 11, 100, 77, 80
-console.log(linkedList);
+// linkedList.remove(80);
+// // 11, 100, 77, 80
+// console.log(linkedList);
 
-const result = linkedList.find(100);
-console.log(result);
+// const result = linkedList.find(100);
+// console.log(result);
