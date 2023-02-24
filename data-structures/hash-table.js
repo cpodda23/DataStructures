@@ -37,8 +37,8 @@ class Hashtable {
   delete(key) {
     const idx = this.hashFunction(key);
     if (!this.buckets[idx]) return null;
+    this.buckets[idx].remove((d) => d.at(0) === key);
     this.size -= 1;
-    return this.buckets[idx].remove((d) => d.at(0) === key);
   }
 }
 
@@ -49,9 +49,9 @@ hashTable.set('surname', 'Podda');
 hashTable.set('city', 'Cagliari');
 hashTable.set('abc', '123');
 hashTable.set('def', '456');
-hashTable.delete('abc');
 hashTable.set('age', 22);
-console.log(hashTable);
+
 console.log(hashTable.size); // 5
 
-console.log(hashTable.get('city'));
+console.log(hashTable.get('abc'));
+console.log(hashTable);

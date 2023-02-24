@@ -43,12 +43,18 @@ export class SinglyLinkedList {
       return;
     }
 
+    if (this.tail === this.head) {
+      this.tail = this.head = null;
+      return;
+    }
+
     let node = this.head;
 
     while (node.next?.next) {
       node = node.next;
     }
 
+    console.log('aaa', node);
     node.next = null;
     this.tail = node;
   }
