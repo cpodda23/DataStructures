@@ -3,4 +3,5 @@
 //import './data-structures/stack';
 //import './data-structures/queue';
 //import './data-structures/hash-table';
-import './data-structures/tree';
+//import './data-structures/tree';
+import './data-structures/binary-tree';
