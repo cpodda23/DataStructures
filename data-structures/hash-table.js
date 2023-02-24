@@ -1,33 +1,44 @@
 import { SinglyLinkedList } from './singly-linked-list';
+
 class Hashtable {
   constructor() {
-    this.data = new Array();
+    this.buckets = [];
+    this.bucketSize = 10;
+    this.size = 0;
   }
 
   hashFunction(string) {
     let hash = 0;
     for (let i = 0; i < string.length; i++) {
-      hash = string.charCodeAt(i);
+      hash += string.charCodeAt(i);
     }
-    return hash;
+    return hash % this.bucketSize;
   }
 
+  // O(1)
   set(key, value) {
-    let location = this.hashFunction(key);
-    if (!this.data[location]) {
-      this.data[location] = [];
+    const idx = this.hashFunction(key);
+    if (!this.buckets[idx]) {
+      this.buckets[idx] = new SinglyLinkedList();
     }
-    // const linkedList = new SinglyLinkedList();
-    //this.data[location].push(linkedList.append([key, value]));
 
-    this.data[location].push([key, value]);
-    return this.data;
+    this.buckets[idx].append([key, value]);
+    this.size += 1;
   }
 
+  // O(n / k)
   get(key) {
-    let location = this.hashFunction(key);
-    if (!this.data[location]) return null;
-    return this.data[location].find((bucket) => bucket[0] === key)[1];
+    const idx = this.hashFunction(key);
+    if (!this.buckets[idx]) return null;
+    return this.buckets[idx].find((d) => d.at(0) === key)?.at(1);
+  }
+
+  // O(n / k)
+  delete(key) {
+    const idx = this.hashFunction(key);
+    if (!this.buckets[idx]) return null;
+    this.size -= 1;
+    return this.buckets[idx].remove((d) => d.at(0) === key);
   }
 }
 
@@ -35,7 +46,12 @@ const hashTable = new Hashtable();
 
 hashTable.set('name', 'Camilla');
 hashTable.set('surname', 'Podda');
+hashTable.set('city', 'Cagliari');
+hashTable.set('abc', '123');
+hashTable.set('def', '456');
+hashTable.delete('abc');
 hashTable.set('age', 22);
 console.log(hashTable);
+console.log(hashTable.size); // 5
 
-console.log(hashTable.get('age'));
+console.log(hashTable.get('city'));

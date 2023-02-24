@@ -45,7 +45,7 @@ export class SinglyLinkedList {
 
     let node = this.head;
 
-    while (node.next.next) {
+    while (node.next?.next) {
       node = node.next;
     }
 
@@ -75,7 +75,11 @@ export class SinglyLinkedList {
     let node = this.head;
     let prevNode = null;
 
-    while (node && node.data !== value) {
+    while (
+      node && value instanceof Function
+        ? !value(node.data)
+        : node.data !== value
+    ) {
       prevNode = node;
       node = node.next;
     }
@@ -99,7 +103,11 @@ export class SinglyLinkedList {
     }
     let node = this.head;
 
-    while (node && node.data !== value) {
+    while (
+      node && value instanceof Function
+        ? !value(node.data)
+        : node.data !== value
+    ) {
       node = node.next;
     }
 
