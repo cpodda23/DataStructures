@@ -5,9 +5,37 @@ class BST {
     this.right = null;
   }
 
-  add(v) {}
+  // O(n)
+  add(v) {
+    if (!this.value) {
+      this.value = v;
+      return;
+    }
+    if (v > this.value) {
+      if (!this.right) {
+        this.right = new BST(v);
+      } else {
+        this.right.add(v);
+      }
+    } else {
+      if (!this.left) {
+        this.left = new BST(v);
+      } else {
+        this.left.add(v);
+      }
+    }
+  }
 
-  search(v) {}
+  // O(n)
+  search(v) {
+    if (v > this.value) {
+      return this.right ? this.right.search(v) : null;
+    }
+    if (v < this.value) {
+      return this.left ? this.left.search(v) : null;
+    }
+    return this.value;
+  }
 }
 
 const bst = new BST();
@@ -19,4 +47,4 @@ ns.forEach((n) => bst.add(n));
 console.log(bst);
 
 console.log(bst.search(22)); // null
-console.log(bst.search(7)); // 7
+console.log(bst.search(6)); // 7
