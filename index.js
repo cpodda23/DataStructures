@@ -4,4 +4,5 @@
 //import './data-structures/queue';
 //import './data-structures/hash-table';
 //import './data-structures/tree';
-import './data-structures/binary-tree';
+//import './data-structures/binary-tree';
+import './algorithms/binary-search';
